@@ -128,3 +128,13 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# OS-specific files
+.DS_Store      
+Thumbs.db      
+desktop.ini    
+
+# VS Code specific settings
+.vscode/       
+.history/      
+*.code-workspace
