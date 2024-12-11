@@ -83,7 +83,7 @@
                                         <label for="password">Password</label>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                                        <button type="submit" class="btn btn-primary" id="sign-up">Sign Up</button>
                                     </div>
                                 </form>
                             </div>
@@ -115,28 +115,36 @@
 
 <% switch (errorType) {
     case 0: %>
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success alert-dismissiblefade show" role="alert">
             User added successfully.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
         </div>
     <% break;
     case 1: %>
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show" id="danger-alert" role="alert">
             Email and username already exist. Try Again.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <% break;
 
     case 2: %>
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger alert-dismissiblefade show " role="alert">
             Email already exists. Try Again.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
         </div>
     <% break;
 
     case 3: %>
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
             Username already exists. Try Again.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
         </div>
     <% break;
 
     
 } %>
+
 
