@@ -1,0 +1,19 @@
+[
+  {
+    "userid": "v@v.com",
+    "password": "v",
+    "username": "Vivian",
+    "type": "admin"
+  },
+  {
+    "userid": "vane@vane.com",
+    "password": 1234,
+    "username": "vane",
+    "type": "normal"
+  },
+  {
+    "username": "gg",
+    "password": "g",
+    "type": "normal"
+  }
+]
