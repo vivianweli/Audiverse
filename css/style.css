@@ -36,13 +36,13 @@ body {
 }
 
 #content {
-  background: #fff;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-}
+    background: #fff;
+    display: grid;
+    grid-template-columns: 100px auto 100px;
+  }
 
 #content-center {
-  grid-column: 2/6;
+  flex-grow: 1; /* Allow content area to take up all available space */
   border-top: solid rgb(200, 200, 200) 2px;
   border-bottom: solid rgb(200, 200, 200) 2px;
   padding: 10px;
