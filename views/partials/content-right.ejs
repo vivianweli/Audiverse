@@ -1,0 +1,5 @@
+<% if (typeof userid === 'undefined') { %>
+    <p>You are not logged in. 
+<% } else { %>
+    <p>Welcome, <%- session.username %>! 
+<% } %>
