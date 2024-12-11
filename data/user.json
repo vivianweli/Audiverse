@@ -1,16 +1,26 @@
-
 [
-        {
-            "userid": "v@v.com",
-            "password": "v",
-            "username": "Vivian",
-            "type":"admin"
-        },
-        {
-            "userid": "vane@vane.com",
-            "password": 1234,
-            "username": "vane",
-            "type":"normal"
-        }
-  
-    ]
+  {
+    "userid": "v@v.com",
+    "password": "v",
+    "username": "Vivian",
+    "type": "admin"
+  },
+  {
+    "userid": "f@f.com",
+    "password": "f",
+    "username": "Francisco",
+    "type": "admin"
+  },
+  {
+    "userid": "g@g.com",
+    "password": "g",
+    "username": "gg",
+    "type": "normal"
+  },
+  {
+    "userid": "apple@gmail.com",
+    "password": "a",
+    "username": "apple",
+    "type": "normal"
+  }
+]

@@ -11,11 +11,11 @@ exports.loginUser = function (req, res, next) {
         session.userid = req.body.userid;
         session.username = User.getName(req.body.userid)
         session.type = User.getType(req.body.userid)
-        res.render("index.ejs", { 'userid': session.userid, error: false, errorType: "default"})
+        res.render("index.ejs", { 'userid': session.userid, error: false, errorType: "default", currentRoute: '/'})
     }
     else {
         console.log(User.getName(req.body.userid)+ " do not match " + req.body.password)
-        res.render("index.ejs", { 'userid': undefined, error: true, errorType: "default" })
+        res.render("index.ejs", { 'userid': undefined, error: true, errorType: "default", currentRoute: '/' })
 
     }
 }

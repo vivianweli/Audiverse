@@ -70,5 +70,15 @@ body {
   padding: 10px;
 }
 
+.nav-link.active {
+    font-weight: bold;
+  }
+
+.nav-link:hover {
+background-color: skyblue;
+border-radius: 7px;
+}
+
+  
 
 
