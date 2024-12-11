@@ -101,6 +101,10 @@ app.use(userRoutes);
 // PROFILE
 const profileRoutes = require('./routers/profile');
 app.use(profileRoutes);
+
+// UPLOAD SOUND
+const uploadRoutes = require('./routers/upload');
+app.use(uploadRoutes);
 /*********************************/
 /******* Application start *******/
 /*********************************/
