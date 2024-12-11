@@ -90,29 +90,17 @@ app.get('/vis', function (req, res) {
 //     res.sendFile('views/login.html',{root:__dirname})
 })
 
+// SIGN UP
 const addUserRoutes = require('./routers/sign-up');
 app.use(addUserRoutes);
 
 // LOGIN
 const userRoutes = require('./routers/user');
 app.use(userRoutes);
-// app.post('/login',(req,res) => {
-//   if(req.body.userid == myusername && req.body.password == mypassword){
-//       session=req.session;
-//       session.userid=req.body.userid;
-//       res.render("index.ejs", {'userid':session.userid})
-//   }
-//   else{
-//       console.log(req.body.userid +" do not match "+req.body.password)
-//       res.send('Invalid username or password.<a href="/">Try again</a>');
-//   }
-// })
 
-// app.get('/logout',(req,res) => {
-//   req.session.destroy();
-//   res.redirect('/');
-// });
-
+// PROFILE
+const profileRoutes = require('./routers/profile');
+app.use(profileRoutes);
 /*********************************/
 /******* Application start *******/
 /*********************************/
