@@ -62,8 +62,6 @@ app.use(expressLayouts);
 app.set('layout', './layouts/base-layout.ejs')
 
 
-
-
 /*********************************/
 /************ Routes *************/
 /*********************************/
@@ -78,17 +76,9 @@ app.get('', (req, res) => {
       res.render("index.ejs",{'userid':session.userid, error: false, errorType: "default"})
 
 })
-//const visPathRoutes = require('./routers/vis-path') 
-//app.use(visPathRoutes);
 
-app.get('/vis', function (req, res) {
-//   session=req.session;
-//   if(session.userid){
-//     console.log(session.userid)
-//     res.render("vis.ejs", {'userid':session.userid, 'username': session.username})
-//   } else
-//     res.sendFile('views/login.html',{root:__dirname})
-})
+const searchRoutes = require('./routers/search');
+app.use(searchRoutes);
 
 // SIGN UP
 const addUserRoutes = require('./routers/sign-up');

@@ -25,7 +25,6 @@ module.exports = class User {
             }
           
         }
-        session.type = User.getType(req.body.userid)
     }
     static getType = function (userid) {
         var result = undefined;
