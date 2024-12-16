@@ -1,106 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Audio List</title>
-  <style>
-    body { font-family: Arial, sans-serif; }
-    .filter { margin: 20px 0; }
-    .filter select { padding: 5px; }
-    .audio-item { margin: 10px 0; padding: 10px; border: 1px solid #ddd; }
-    .tags { color: gray; font-size: 0.9em; }
-    a { text-decoration: none; color: blue; }
-  </style>
-</head>
-<body>
-  <h1>
+<h1>
     <label>Audio List</label>
   </h1>
   
-
   <!-- Tag Filter -->
   <div class="filter">
     <label for="tag-filter">Filter by tag:</label>
     <select id="tag-filter">
       <option value="all">All</option>
+      <% sounds.tags.forEach(tag => { %>
+        <option value="<%= tag %>"><%= tag %></option>
+      <% }); %>
     </select>
   </div>
-
+  
   <!-- Audio List -->
-  <div id="audio-list"></div>
-
+  <div id="audio-list">
+    <% if (sounds.sounds.length === 0) { %>
+      <p>No audio available for this tag.</p>
+    <% } else { %>
+      <% sounds.sounds.forEach(audio => { %>
+        <div class="audio-item">
+          <h2><a href="/sound/<%= audio.id %>"><%= audio.title %></a></h2>
+          <p class="tags">
+            <% if (!audio.tags || audio.tags === '') { %>
+              No tags
+            <% } else if (Array.isArray(audio.tags)) { %>
+              Tags: <%= audio.tags.join(', ') %>
+            <% } else { %>
+              Tag: <%= audio.tags %>
+            <% } %>
+          </p>
+          <p>Uploader: <%= audio.uploader %> | Likes: <%= audio.likes %> | Duration: <%= audio.duration %></p>
+        </div>
+      <% }); %>
+    <% } %>
+  </div>
+  
   <script>
-    let audioData = [];
-    let allTags = [];
-
-    // Load data from JSON
-    fetch('sounds.json')
-      .then(response => response.json())
-      .then(data => {
-        audioData = data.sounds;
-        allTags = data.tags;
-
-        populateTagFilter();
-        displayAudios(audioData);
-      })
-      .catch(err => console.error('Error:', err));
-
-    // Display audios in the list
+    // Injected data from EJS to JavaScript
+    let audioData = <%- JSON.stringify(sounds.sounds) %>;
+    let allTags = <%- JSON.stringify(sounds.tags) %>;
+  
+    // Event listener for tag filter
+    document.getElementById('tag-filter').addEventListener('change', filterByTag);
+  
+    function filterByTag() {
+      const selectedTag = document.getElementById('tag-filter').value;
+      let filteredAudios;
+  
+      if (selectedTag === 'all') {
+        filteredAudios = audioData;
+      } else {
+        filteredAudios = audioData.filter(audio => {
+          // Ensure audio.tags is always an array
+          let audioTags = Array.isArray(audio.tags) ? audio.tags : (audio.tags ? audio.tags.split(',').map(tag => tag.trim()) : []);
+  
+          return audioTags.includes(selectedTag);
+        });
+      }
+  
+      displayAudios(filteredAudios);
+    }
+  
     function displayAudios(audios) {
       const audioList = document.getElementById('audio-list');
       audioList.innerHTML = ''; // Clear the list
-
+  
       if (audios.length === 0) {
         audioList.innerHTML = '<p>No audio available for this tag.</p>';
         return;
       }
-
+  
       audios.forEach(audio => {
         const div = document.createElement('div');
         div.className = 'audio-item';
         let tagMessage;
-        if (audio.tags=== 'undefined') {
+  
+        // Ensure audio.tags is always an array
+        let audioTags = Array.isArray(audio.tags) ? audio.tags : (audio.tags ? audio.tags.split(',').map(tag => tag.trim()) : []);
+  
+        if (audioTags.length === 0) {
           tagMessage = 'No tags';
-        } else if (allTags.includes(audio.tags)) {
-          tagMessage = `Tag: ${audio.tags}`;
         } else {
-          tagMessage = `Tags: ${audio.tags.split(',').join(', ')}`;
+          tagMessage = `Tags: ${audioTags.join(', ')}`;
         }
-
+  
         div.innerHTML = `
           <h2><a href="details.html?id=${audio.id}">${audio.title}</a></h2>
-          <p class="tags">Tags: ${tagMessage}</p>
+          <p class="tags">${tagMessage}</p>
           <p>Uploader: ${audio.uploader} | Likes: ${audio.likes} | Duration: ${audio.duration}</p>
         `;
         audioList.appendChild(div);
       });
     }
-
-    // Populate the tag filter dropdown
-    function populateTagFilter() {
-      const tagFilter = document.getElementById('tag-filter');
-      allTags.forEach(tag => {
-        const option = document.createElement('option');
-        option.value = tag;
-        option.textContent = tag;
-        tagFilter.appendChild(option);
-      });
-
-      tagFilter.addEventListener('change', filterByTag);
-    }
-
-    // Filter audios by selected tag
-    function filterByTag() {
-      const selectedTag = document.getElementById('tag-filter').value;
-
-      if (selectedTag === 'all') {
-        displayAudios(audioData);
-      } else {
-        const filteredAudios = audioData.filter(audio => audio.tags.includes(selectedTag));
-        displayAudios(filteredAudios);
-      }
-    }
   </script>
-</body>
-</html>
+  

@@ -67,7 +67,6 @@ app.set('layout', './layouts/base-layout.ejs')
 /*********************************/
 
 const sound_data = JSON.parse(fs.readFileSync('./data/sounds.json'));
-const tags = sound_data.tags; // Extract the "tags" array
 // MAIN
 app.get('', (req, res) => {
   session=req.session;
@@ -78,7 +77,7 @@ app.get('', (req, res) => {
         error: false, 
         errorType: "default", 
         currentRoute: '/', 
-        tags: tags
+        sounds: sound_data
     })
     }else
       //res.sendFile('views/login.html',{root:__dirname})
@@ -87,10 +86,11 @@ app.get('', (req, res) => {
         error: false, 
         errorType: "default", 
         currentRoute: '/',
-        tags: tags
+        sounds: sound_data
     })
 
 })
+
 
 const searchRoutes = require('./routers/search');
 app.use(searchRoutes);
@@ -107,9 +107,16 @@ app.use(userRoutes);
 const profileRoutes = require('./routers/profile');
 app.use(profileRoutes);
 
-// UPLOAD SOUND
+// UPLOAD SOUND PAGE
 const uploadRoutes = require('./routers/upload');
 app.use(uploadRoutes);
+
+// UPLOAD SOUND
+const uploadNowRoutes = require('./routers/upload-now');
+app.use(uploadNowRoutes);
+// // SOUND PAGE
+// const soundRoutes = require('./routers/sound');
+// app.use(soundRoutes);
 /*********************************/
 /******* Application start *******/
 /*********************************/

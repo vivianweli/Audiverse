@@ -3,7 +3,9 @@ when the user trigger them. It first makes a declaration of the model class user
 that we defined before. In the login function, it uses this class to verify 
 if the userid and password input by the user was correct or not.
 */
-const User = require('../models/user')
+const fs = require('fs');
+const User = require('../models/user');
+const sound_data = JSON.parse(fs.readFileSync('./data/sounds.json'));
 
 exports.loginUser = function (req, res, next) {
     if (User.verify(req.body.userid,req.body.password)) {
@@ -11,11 +13,11 @@ exports.loginUser = function (req, res, next) {
         session.userid = req.body.userid;
         session.username = User.getName(req.body.userid)
         session.type = User.getType(req.body.userid)
-        res.render("index.ejs", { 'userid': session.userid, error: false, errorType: "default", currentRoute: '/'})
+        res.render("index.ejs", { 'userid': session.userid, error: false, errorType: "default", currentRoute: '/', sounds: sound_data})
     }
     else {
         console.log(User.getName(req.body.userid)+ " do not match " + req.body.password)
-        res.render("index.ejs", { 'userid': undefined, error: true, errorType: "default", currentRoute: '/' })
+        res.render("index.ejs", { 'userid': undefined, error: true, errorType: "default", currentRoute: '/', sounds: sound_data})
 
     }
 }

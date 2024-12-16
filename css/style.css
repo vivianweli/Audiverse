@@ -77,5 +77,10 @@ border-radius: 7px;
 }
 
   
+.filter { margin: 20px 0; }
+    .filter select { padding: 5px; }
+    .audio-item { margin: 10px 0; padding: 10px; border: 1px solid #ddd; }
+    .tags { color: gray; font-size: 0.9em; }
+    a { text-decoration: none; color: blue; }
 
 
