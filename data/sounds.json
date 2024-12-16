@@ -4,7 +4,12 @@
       "id": 1734171604029,
       "title": "storm",
       "filePath": "1734171603995.wav",
-      "tags": "nature,water,rain,thunderstorm",
+      "tags": [
+        "nature",
+        "water",
+        "rain",
+        "thunderstorm"
+      ],
       "location": {
         "latitude": "48.864714761802794",
         "longitude": "3.1640625000000004",
@@ -18,16 +23,45 @@
       "audioFormat": "wav"
     },
     {
-      "tags": [],
-      "filePath": ""
+      "id": "1734375058349",
+      "title": "like",
+      "filePath": "1734375058349.wav",
+      "tags": [
+        "relaxing",
+        "cityscape"
+      ],
+      "location": {
+        "latitude": "43.57044180598566",
+        "longitude": "-79.63165283203125",
+        "city": "Mississauga",
+        "country": "Canada"
+      },
+      "uploadDateTime": "2024-12-16T18:50:58.513Z",
+      "uploader": "userid",
+      "likes": 0,
+      "duration": "Unknown",
+      "audioFormat": "wav"
     },
     {
-      "tags": [],
-      "filePath": ""
-    },
-    {
-      "tags": [],
-      "filePath": ""
+      "id": "1734375385232",
+      "title": "because",
+      "filePath": "1734375385232.wav",
+      "tags": [
+        "nature",
+        "ambient",
+        "white noise"
+      ],
+      "location": {
+        "latitude": "31.611287945395087",
+        "longitude": "-84.19372558593751",
+        "city": "Albany",
+        "country": "United States"
+      },
+      "uploadDateTime": "2024-12-16T18:56:25.686Z",
+      "uploader": "Vivian",
+      "likes": 0,
+      "duration": "Unknown",
+      "audioFormat": "wav"
     }
   ],
   "tags": [
