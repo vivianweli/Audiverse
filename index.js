@@ -67,27 +67,46 @@ app.set('layout', './layouts/base-layout.ejs')
 const sound_data = JSON.parse(fs.readFileSync('./data/sounds.json'));
 // MAIN
 app.get('', (req, res) => {
-  session=req.session;
-    if(session.userid){
+    session = req.session;
+    const soundsPerPage = 5;  // Number of audio items per page
+    const page = parseInt(req.query.page) || 1;  // Get page number from query, default to 1
+
+    // Calculate the starting index of the current page
+    const startIndex = (page - 1) * soundsPerPage;
+
+    // Get the sounds to display for the current page
+    const paginatedSounds = sound_data.sounds.slice(startIndex, startIndex + soundsPerPage);
+
+    // Get total number of pages
+    const totalPages = Math.ceil(sound_data.sounds.length / soundsPerPage);
+  
+    // Check if user is logged in and render page accordingly
+    if (session.userid) {
+      res.render("index.ejs", {
+        'userid': session.userid,
+        'username': session.username,
+        error: false,
+        errorType: "default",
+        currentRoute: '/',
+        sounds: paginatedSounds,
+        tags: sound_data.tags,
+        currentPage: page,  // Pass current page number
+        totalPages: totalPages  // Pass total pages for pagination control
+      });
+    } else {
       res.render("index.ejs", {
         'userid':session.userid, 
-        'username': session.username, 
-        error: false, 
-        errorType: "default", 
-        currentRoute: '/', 
-        sounds: sound_data
-    })
-    }else
-      //res.sendFile('views/login.html',{root:__dirname})
-      res.render("index.ejs",{
-        'userid':session.userid, 
-        error: false, 
-        errorType: "default", 
+        error: false,
+        errorType: "default",
         currentRoute: '/',
-        sounds: sound_data
-    })
-
-})
+        sounds: paginatedSounds, 
+        tags: sound_data.tags, 
+        currentPage: page,  // Pass current page number
+        totalPages: totalPages  // Pass total pages for pagination control
+      });
+    }
+  });
+  
 
 
 const searchRoutes = require('./routers/search');
