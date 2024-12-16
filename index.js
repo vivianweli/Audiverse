@@ -68,19 +68,36 @@ const sound_data = JSON.parse(fs.readFileSync('./data/sounds.json'));
 // MAIN
 app.get('', (req, res) => {
     session = req.session;
-    const soundsPerPage = 5;  // Number of audio items per page
-    const page = parseInt(req.query.page) || 1;  // Get page number from query, default to 1
-
+    
+    // Number of items per page
+    const soundsPerPage = 5;
+    
+    // Get current page number from query, default to 1 if not present
+    const page = parseInt(req.query.page) || 1;
+    
+    // Get the tag filter from the query string, default to 'all' if not present
+    const selectedTag = req.query.tag || 'all';
+    
+    // Filter the sounds based on the selected tag
+    let filteredSounds = sound_data.sounds;
+  
+    if (selectedTag !== 'all') {
+      filteredSounds = sound_data.sounds.filter(audio => {
+        let audioTags = Array.isArray(audio.tags) ? audio.tags : (audio.tags ? audio.tags.split(',').map(tag => tag.trim()) : []);
+        return audioTags.includes(selectedTag);
+      });
+    }
+  
     // Calculate the starting index of the current page
     const startIndex = (page - 1) * soundsPerPage;
-
-    // Get the sounds to display for the current page
-    const paginatedSounds = sound_data.sounds.slice(startIndex, startIndex + soundsPerPage);
-
-    // Get total number of pages
-    const totalPages = Math.ceil(sound_data.sounds.length / soundsPerPage);
   
-    // Check if user is logged in and render page accordingly
+    // Get the sounds to display for the current page
+    const paginatedSounds = filteredSounds.slice(startIndex, startIndex + soundsPerPage);
+  
+    // Calculate the total number of pages
+    const totalPages = Math.ceil(filteredSounds.length / soundsPerPage);
+  
+    // Render the page with the paginated and filtered sounds
     if (session.userid) {
       res.render("index.ejs", {
         'userid': session.userid,
@@ -88,24 +105,27 @@ app.get('', (req, res) => {
         error: false,
         errorType: "default",
         currentRoute: '/',
-        sounds: paginatedSounds,
-        tags: sound_data.tags,
-        currentPage: page,  // Pass current page number
-        totalPages: totalPages  // Pass total pages for pagination control
+        sounds: paginatedSounds,  // Pass the paginated sounds
+        currentPage: page,        // Pass the current page number
+        totalPages: totalPages,   // Pass the total number of pages
+        selectedTag: selectedTag, // Pass the selected tag to the frontend
+        tags: sound_data.tags     // Pass the list of all tags
       });
     } else {
       res.render("index.ejs", {
-        'userid':session.userid, 
+        'userid': session.userid,  // No user if not logged in
         error: false,
         errorType: "default",
         currentRoute: '/',
-        sounds: paginatedSounds, 
-        tags: sound_data.tags, 
-        currentPage: page,  // Pass current page number
-        totalPages: totalPages  // Pass total pages for pagination control
+        sounds: paginatedSounds,  // Pass the paginated sounds
+        currentPage: page,        // Pass the current page number
+        totalPages: totalPages,   // Pass the total number of pages
+        selectedTag: selectedTag, // Pass the selected tag to the frontend
+        tags: sound_data.tags     // Pass the list of all tags
       });
     }
   });
+  
   
 
 
