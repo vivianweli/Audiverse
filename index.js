@@ -3,7 +3,7 @@ const path = require('path')
 const expressLayouts = require('express-ejs-layouts') // Import express layouts 
 const app = express();              //Instantiate an express app, the main work horse of this server
 const port = 8080;                  //Save the port number where your server will be listening
-
+const fs = require('fs')
 /*********************************/
 /** DEFINITIONS TO USE SESSIONS **/
 /*********************************/
@@ -66,14 +66,29 @@ app.set('layout', './layouts/base-layout.ejs')
 /************ Routes *************/
 /*********************************/
 
+const sound_data = JSON.parse(fs.readFileSync('./data/sounds.json'));
+const tags = sound_data.tags; // Extract the "tags" array
 // MAIN
 app.get('', (req, res) => {
   session=req.session;
     if(session.userid){
-      res.render("index.ejs", {'userid':session.userid, 'username': session.username, error: false, errorType: "default", currentRoute: '/'})
+      res.render("index.ejs", {
+        'userid':session.userid, 
+        'username': session.username, 
+        error: false, 
+        errorType: "default", 
+        currentRoute: '/', 
+        tags: tags
+    })
     }else
       //res.sendFile('views/login.html',{root:__dirname})
-      res.render("index.ejs",{'userid':session.userid, error: false, errorType: "default", currentRoute: '/'})
+      res.render("index.ejs",{
+        'userid':session.userid, 
+        error: false, 
+        errorType: "default", 
+        currentRoute: '/',
+        tags: tags
+    })
 
 })
 

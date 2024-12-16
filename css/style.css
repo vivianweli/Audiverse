@@ -3,7 +3,7 @@ body {
   height: 100%
 }
 #map{
-    height: 300px;
+    height: 100%;
 }
 #loginbox{
     border:1px solid grey;
@@ -38,13 +38,12 @@ body {
 #content {
     background: #fff;
     display: grid;
-    grid-template-columns: 100px auto 100px;
+    grid-template-columns:   400px auto;
   }
 
 #content-center {
   flex-grow: 1; /* Allow content area to take up all available space */
-  border-top: solid rgb(200, 200, 200) 2px;
-  border-bottom: solid rgb(200, 200, 200) 2px;
+  border: solid rgb(200, 200, 200) 2px;
   padding: 10px;
 }
 
@@ -54,8 +53,6 @@ body {
 }
 
 #content-right {
-  border: solid rgb(200, 200, 200) 2px;
-  padding: 10px;
 }
 
 #footer {

@@ -22,5 +22,11 @@
     "password": "a",
     "username": "apple",
     "type": "normal"
+  },
+  {
+    "userid": "banana@b.com",
+    "password": "b",
+    "username": "bb",
+    "type": "normal"
   }
 ]

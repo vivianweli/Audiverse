@@ -1,0 +1,47 @@
+{
+  "sounds": [
+    {
+      "id": 1734171604029,
+      "title": "storm",
+      "filePath": "1734171603995.wav",
+      "tags": "nature,water,rain,thunderstorm",
+      "location": {
+        "latitude": "48.864714761802794",
+        "longitude": "3.1640625000000004",
+        "city": "Doue",
+        "country": "France"
+      },
+      "uploadDateTime": "2024-12-14T10:20:04.029Z",
+      "uploader": "Toto",
+      "likes": 0,
+      "duration": "Unknown",
+      "audioFormat": "wav"
+    }
+  ],
+  "tags": [
+    "nature",
+    "forest",
+    "relaxing",
+    "water",
+    "ocean",
+    "urban",
+    "rain",
+    "animals",
+    "birds",
+    "wind",
+    "instrumental",
+    "classical",
+    "rock",
+    "ambient",
+    "white noise",
+    "thunderstorm",
+    "fireplace",
+    "cityscape",
+    "meditation",
+    "sports",
+    "traffic",
+    "festival",
+    "mountains",
+    "sunset"
+  ]
+}
