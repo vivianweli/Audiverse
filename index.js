@@ -4,7 +4,6 @@ const expressLayouts = require('express-ejs-layouts') // Import express layouts
 const app = express();              //Instantiate an express app, the main work horse of this server
 const port = 8080;                  //Save the port number where your server will be listening
 const fs = require('fs')
-const multer = require('multer');
 
 /*********************************/
 /** DEFINITIONS TO USE SESSIONS **/
@@ -60,17 +59,6 @@ app.use(expressLayouts);
 app.set('layout', './layouts/base-layout.ejs')
 
 
-// Set up multer to store files
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, 'uploads/'); // Folder where files will be stored
-    },
-    filename: (req, file, cb) => {
-      cb(null, Date.now() + path.extname(file.originalname)); // File name with timestamp
-    },
-  });
-  
-  const upload = multer({ storage: storage });
 
 /*********************************/
 /************ Routes *************/
@@ -117,42 +105,10 @@ app.use(userRoutes);
 const profileRoutes = require('./routers/profile');
 app.use(profileRoutes);
 
-// UPLOAD SOUND PAGE
+// UPLOAD SOUND 
 const uploadRoutes = require('./routers/upload');
 app.use(uploadRoutes);
 
-// Handle file uploads with POST method on '/upload-now'
-app.post('/upload-now', upload.single('audio'), (req, res) => {
-    const formData = req.body;
-    const audioFile = req.file;
-
-    const [city, country] = req.body.location.split(',').map(part => part.trim());
-    const [filename, format] = req.file.filename.split('.');
-    let sounds = JSON.parse(fs.readFileSync('./data/sounds.json'));
-    sounds.sounds.push({
-        "id": filename,
-        "title": req.body.title,
-        "filePath": req.file.filename,
-        "tags": req.body.tags,
-        "location": {
-          "latitude": req.body.latitude,
-          "longitude": req.body.longitude,
-          "city": city,
-          "country": country
-        },
-        "uploadDateTime": new Date().toISOString(),
-        "uploader": req.body.uploader,
-        "likes": 0,
-        "duration": "Unknown",
-        "audioFormat": format
-    })   
-    fs.writeFile('./data/sounds.json', JSON.stringify(sounds, null, 2), () =>{
-        console.log(req)
-        })
-
-    // After handling the upload, redirect the user back to the homepage
-    res.redirect('/upload');
-});
 
 // // SOUND PAGE
 // const soundRoutes = require('./routers/sound');
