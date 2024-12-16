@@ -1,72 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Audio Details</title>
-  <style>
-    body { font-family: Arial, sans-serif; }
-    .audio-details { max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; }
-    .audio-details h2 { margin-top: 0; }
-    .audio-details p { margin: 5px 0; }
-  </style>
-</head>
-<body>
-  <div class="audio-details" id="audio-details">
-    <h2>Loading...</h2>
-  </div>
+    <% if (audio) { %>
+      <h2><%= audio.title %></h2>
+      <p><strong>Uploader:</strong> <%= audio.uploader %></p>
+      <p><strong>Location:</strong> <%= audio.location.city %>, <%= audio.location.country %></p>
 
-  <script>
-    // Extract the 'id' parameter from the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const audioId = urlParams.get('id');
+      <% if (audio.tags && audio.tags.length > 0) { %>
+        <p><strong>Tags:</strong> <%= audio.tags %></p>
+      <% } else { %>
+        <p><strong>Tags:</strong> No tags</p>
+      <% } %>
 
-    fetch('sounds.json')
-      .then(response => response.json())
-      .then(data => {
-        allTags = data.tags;
-      })
-      .catch(err => console.error('Error:', err));
-    // Fetch audio details from sounds.json
-    fetch('sounds.json')
-      .then(response => response.json())
-      .then(data => {
-        const audio = data.sounds.find(audio => audio.id == audioId);
-        if (audio) {
-          displayAudioDetails(audio);
-        } else {
-          document.getElementById('audio-details').innerHTML = '<p>Audio not found.</p>';
-        }
-      })
-      .catch(err => console.error('Error:', err));
+      <p><strong>Likes:</strong> <%= audio.likes %></p>
+      <p><strong>Duration:</strong> <%= audio.duration %></p>
+      <p><strong>Uploaded on:</strong> <%= audio.uploadDateTime %></p>
 
-    // Display audio details on the page
-    function displayAudioDetails(audio) {
-      const div = document.createElement('div');
-        div.className = 'audio-item';
-        let tagMessage;
-        if (audio.tags=== 'undefined') {
-          tagMessage = 'No tags';
-        } else if (allTags.includes(audio.tags)) {
-          tagMessage = `Tag: ${audio.tags}`;
-        } else {
-          tagMessage = `Tags: ${audio.tags.split(',').join(', ')}`;
-        }
-      const audioDetails = document.getElementById('audio-details');
-      audioDetails.innerHTML = `
-        <h2>${audio.title}</h2>
-        <p><strong>Uploader:</strong> ${audio.uploader}</p>
-        <p><strong>Location:</strong> ${audio.location.city}, ${audio.location.country}</p>
-        <p><strong>Tags:</strong> ${tagMessage}</p>
-        <p><strong>Likes:</strong> ${audio.likes}</p>
-        <p><strong>Duration:</strong> ${audio.duration}</p>
-        <p><strong>Uploaded on:</strong> ${audio.uploadDateTime}</p>
-        <audio controls>
-          <source src="uploads/${audio.filePath}" type="audio/${audio.audioFormat}">
-          Your browser does not support the audio element.
-        </audio>
-      `;
-    }
-  </script>
-</body>
-</html>
+      <audio controls>
+        <source src="/uploads/<%= audio.filePath %>" type="audio/<%= audio.audioFormat %>">
+        Your browser does not support the audio element.
+      </audio>
+    <% } else { %>
+      <p>Audio not found.</p>
+    <% } %>

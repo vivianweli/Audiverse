@@ -111,8 +111,8 @@ app.use(uploadRoutes);
 
 
 // // SOUND PAGE
-// const soundRoutes = require('./routers/sound');
-// app.use(soundRoutes);
+const soundRoutes = require('./routers/sound');
+app.use(soundRoutes);
 /*********************************/
 /******* Application start *******/
 /*********************************/
