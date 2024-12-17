@@ -1,1 +1,28 @@
-My Profile
+<div>Name: <%=username%></div>
+<div>Email: <%=userid%></div>
+
+ <h2> My Music</h2>
+<!-- Audio List -->
+<div id="audio-list">
+    <% if (my_sounds.length === 0) { %>
+      <p>You uploaded no audio.</p>
+    <% } else { %>
+      <% my_sounds.forEach(audio => { %>
+        <div class="audio-item">
+          <h2><a href="/sound/<%= audio.id %>"><%= audio.title %></a></h2>
+          <p class="tags">
+            <% if (!audio.tags || audio.tags === '') { %>
+              No tags
+            <% } else if (Array.isArray(audio.tags)) { %>
+              Tags: <%= audio.tags.join(', ') %>
+            <% } else { %>
+              Tag: <%= audio.tags %>
+            <% } %>
+          </p>
+          <p>Uploader: <%= audio.uploader %> | Likes: <%= audio.likes %> | Duration: <%= audio.duration %></p>
+        </div>
+      <% }); %>
+    <% } %> 
+   </div> 
+
+  
