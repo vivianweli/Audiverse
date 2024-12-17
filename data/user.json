@@ -64,17 +64,5 @@
     "password": "0",
     "username": "00",
     "type": "normal"
-  },
-  {
-    "userid": "t@t.com",
-    "password": "t",
-    "username": "tt",
-    "type": "normal"
-  },
-  {
-    "userid": "r@r.com",
-    "password": "r",
-    "username": "rr",
-    "type": "normal"
   }
 ]

@@ -4,9 +4,6 @@ const expressLayouts = require('express-ejs-layouts') // Import express layouts
 const app = express();              //Instantiate an express app, the main work horse of this server
 const port = 8080;                  //Save the port number where your server will be listening
 const fs = require('fs')
-const flash = require('connect-flash');
-
-app.use(flash());
 
 
 
@@ -72,7 +69,6 @@ app.set('layout', './layouts/base-layout.ejs')
 // MAIN
 app.get('', (req, res) => {
     session = req.session;
-
     
     // Number of items per page
     const soundsPerPage = 5;
@@ -112,24 +108,41 @@ app.get('', (req, res) => {
         error: false,
         errorType: "default",
         currentRoute: '/',
+<<<<<<< HEAD
         sounds: paginatedSounds,  
         currentPage: page,        
         totalPages: totalPages,   
         selectedTag: selectedTag, 
         tags: sound_data.tags,     
     });
+=======
+        sounds: paginatedSounds,  // Pass the paginated sounds
+        currentPage: page,        // Pass the current page number
+        totalPages: totalPages,   // Pass the total number of pages
+        selectedTag: selectedTag, // Pass the selected tag to the frontend
+        tags: sound_data.tags     // Pass the list of all tags
+      });
+>>>>>>> parent of 6248b6b (added signup and login error)
     } else {
       res.render("index.ejs", {
-        'userid': session.userid,  
+        'userid': session.userid,  // No user if not logged in
         error: false,
         errorType: "default",
         currentRoute: '/',
+<<<<<<< HEAD
         sounds: paginatedSounds,  
         currentPage: page,        
         totalPages: totalPages,   
         selectedTag: selectedTag, 
         tags: sound_data.tags,
 
+=======
+        sounds: paginatedSounds,  // Pass the paginated sounds
+        currentPage: page,        // Pass the current page number
+        totalPages: totalPages,   // Pass the total number of pages
+        selectedTag: selectedTag, // Pass the selected tag to the frontend
+        tags: sound_data.tags     // Pass the list of all tags
+>>>>>>> parent of 6248b6b (added signup and login error)
       });
     }
   });

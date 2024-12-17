@@ -112,4 +112,48 @@
     <p>Welcome, <%- session.username %>! 
 <% } %>
 
+<<<<<<< HEAD
   
+=======
+  <% if (error) { %>
+    <div class="alert alert-danger" role="alert">
+        Invalid email or password.
+    </div>
+ <% } %>
+
+<% switch (errorType) {
+    case 0: %>
+        <div class="alert alert-success alert-dismissiblefade show" role="alert">
+            User added successfully.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+        </div>
+    <% break;
+    case 1: %>
+        <div class="alert alert-danger alert-dismissible fade show" id="danger-alert" role="alert">
+            Email and username already exist. Try Again.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% break;
+
+    case 2: %>
+        <div class="alert alert-danger alert-dismissiblefade show " role="alert">
+            Email already exists. Try Again.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+        </div>
+    <% break;
+
+    case 3: %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Username already exists. Try Again.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+        </div>
+    <% break;
+
+    
+} %>
+
+
+>>>>>>> parent of 6248b6b (added signup and login error)
