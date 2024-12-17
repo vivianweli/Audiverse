@@ -114,6 +114,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   
 =======
 =======
@@ -127,6 +128,19 @@
 <% switch (errorType) {
     case 0: %>
         <div class="alert alert-success alert-dismissiblefade show" role="alert">
+=======
+  <% if (login_error) { %>
+    <div class="alert alert-danger alert-dismissiblefade show" role="alert">
+        Invalid email or password.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+    </div>
+ <% } %>
+
+<% switch (signup_error) {
+    case 0: %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+>>>>>>> parent of 469beef (temp commit)
             User added successfully.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
@@ -140,7 +154,11 @@
     <% break;
 
     case 2: %>
+<<<<<<< HEAD
         <div class="alert alert-danger alert-dismissiblefade show " role="alert">
+=======
+        <div class="alert alert-danger alert-dismissible fade show " role="alert">
+>>>>>>> parent of 469beef (temp commit)
             Email already exists. Try Again.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
@@ -159,4 +177,7 @@
 } %>
 
 
+<<<<<<< HEAD
 >>>>>>> parent of 6248b6b (added signup and login error)
+=======
+>>>>>>> parent of 469beef (temp commit)
