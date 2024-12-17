@@ -4,21 +4,24 @@ that we defined before. In the login function, it uses this class to verify
 if the userid and password input by the user was correct or not.
 */
 const fs = require('fs');
-const User = require('../models/user');
-const sound_data = JSON.parse(fs.readFileSync('./data/sounds.json'));
+let User = require('../models/user');
 
-exports.loginUser = function (req, res, next) {
+exports.loginUser = function (req, res, next) {     
+    session = req.session;
     if (User.verify(req.body.userid,req.body.password)) {
-        session = req.session;
         session.userid = req.body.userid;
         session.username = User.getName(req.body.userid)
         session.type = User.getType(req.body.userid)
-        res.render("index.ejs", { 'userid': session.userid, error: false, errorType: "default", currentRoute: '/', sounds: sound_data})
+        console.log(session.userid)
+        console.log(session.username)
+
+        
+        res.render('login-success.ejs', { 'userid': session.userid, error: false, errorType: "default", currentRoute: '/login'});
     }
     else {
+        console.log(req.body);
         console.log(User.getName(req.body.userid)+ " do not match " + req.body.password)
-        res.render("index.ejs", { 'userid': undefined, error: true, errorType: "default", currentRoute: '/', sounds: sound_data})
-
+        res.render('login-failure.ejs', { 'userid': session.userid, error: false, errorType: "default", currentRoute: '/login'});
     }
 }
 

@@ -3,10 +3,15 @@ It also creates a class User that has a function to verify a user connection.
 In the real world, this list should be a real database and this verification a query to a database.
 */
 const fs = require("fs")
-let users = JSON.parse(fs.readFileSync('./data/user.json'));
 
 module.exports = class User {
+    // Helper method to reload users
+    static loadUsers = function () {
+        let users = JSON.parse(fs.readFileSync('./data/user.json'));
+        return users;
+    }
     static verify = function (userid, password) {
+        let users = this.loadUsers();
         var flag = false;
         for (let i = 0; i < users.length; i++) {
             if (users[i].userid == userid && users[i].password == password) {
@@ -17,6 +22,7 @@ module.exports = class User {
 
     }
     static getName = function (userid) {
+        let users = this.loadUsers();
         var result = undefined;
         for (let i = 0; i < users.length; i++) {
             if (users[i].userid == userid) {
@@ -27,6 +33,7 @@ module.exports = class User {
         }
     }
     static getType = function (userid) {
+        let users = this.loadUsers();
         var result = undefined;
         for (let i = 0; i < users.length; i++) {
             if (users[i].userid == userid) {
@@ -38,6 +45,7 @@ module.exports = class User {
         
     }
     static existsUserid = function (userid) {
+        let users = this.loadUsers();
         var flag = false;
         for (let i = 0; i < users.length; i++) {
             if (users[i].userid == userid) {
@@ -50,6 +58,7 @@ module.exports = class User {
     }
 
     static existsUsername = function (username) {
+        let users = this.loadUsers();
         var flag = false;
         for (let i = 0; i < users.length; i++) {
             if (users[i].username == username) {

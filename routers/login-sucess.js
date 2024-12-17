@@ -1,11 +1,8 @@
 /*This code declares the two routes of login and logout and 
 link them to the functions we defined in our controller.
 */
-const usersControllers = require('../controllers/user')
+const loginSucessController = require('../controllers/login-success')
 const express = require('express')
 const router = express.Router()
-router.post('/login', usersControllers.loginUser)
-router.get('/login', usersControllers.loginUser)
-
-router.get('/logout', usersControllers.logoutUser)
+router.get('/login', loginSucessController.show)
 module.exports = router;

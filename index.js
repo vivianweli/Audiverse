@@ -5,6 +5,8 @@ const app = express();              //Instantiate an express app, the main work 
 const port = 8080;                  //Save the port number where your server will be listening
 const fs = require('fs')
 
+
+
 /*********************************/
 /** DEFINITIONS TO USE SESSIONS **/
 /*********************************/
@@ -64,7 +66,6 @@ app.set('layout', './layouts/base-layout.ejs')
 /************ Routes *************/
 /*********************************/
 
-const sound_data = JSON.parse(fs.readFileSync('./data/sounds.json'));
 // MAIN
 app.get('', (req, res) => {
     session = req.session;
@@ -78,6 +79,8 @@ app.get('', (req, res) => {
     // Get the tag filter from the query string, default to 'all' if not present
     const selectedTag = req.query.tag || 'all';
     
+    // DATA
+    let sound_data = JSON.parse(fs.readFileSync('./data/sounds.json'));
     // Filter the sounds based on the selected tag
     let filteredSounds = sound_data.sounds;
   
@@ -139,6 +142,7 @@ app.use(addUserRoutes);
 // LOGIN
 const userRoutes = require('./routers/user');
 app.use(userRoutes);
+
 
 // PROFILE
 const profileRoutes = require('./routers/profile');
