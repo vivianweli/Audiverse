@@ -9,12 +9,16 @@ exports.uploadPage =  function (req, res, next) {
     session = req.session;
     if (req.session && req.session.userid) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         res.render("upload.ejs", { 
             'userid': session.userid, 
             'username': session.username, 
             currentRoute: '/upload', 
             tags: tags,
         });
+=======
+        res.render("upload.ejs", { 'userid': session.userid, 'username': session.username, error: false, errorType: "default", currentRoute: '/upload', tags: tags});
+>>>>>>> parent of 6248b6b (added signup and login error)
 =======
         res.render("upload.ejs", { 'userid': session.userid, 'username': session.username, error: false, errorType: "default", currentRoute: '/upload', tags: tags});
 >>>>>>> parent of 6248b6b (added signup and login error)
@@ -50,12 +54,16 @@ exports.uploadNow = function (req, res, next) {
     console.log(req.session.userid)
     if (req.session && req.session.userid) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         res.render("upload.ejs", { 
             'userid': session.userid, 
             'username': session.username, 
             currentRoute: '/upload', 
             tags: tags,
         });
+=======
+        res.render("upload.ejs", { 'userid': session.userid, 'username': session.username, error: false, errorType: "default", currentRoute: '/upload', tags: tags});
+>>>>>>> parent of 6248b6b (added signup and login error)
 =======
         res.render("upload.ejs", { 'userid': session.userid, 'username': session.username, error: false, errorType: "default", currentRoute: '/upload', tags: tags});
 >>>>>>> parent of 6248b6b (added signup and login error)
