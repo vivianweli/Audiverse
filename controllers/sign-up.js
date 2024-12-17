@@ -6,17 +6,27 @@ exports.addUser = function (req, res, next) {
     session = req.session;
     
     if(User.existsUserid(req.body.userid)){
-        if(User.existsUsername(req.body.username))
+        if(User.existsUsername(req.body.username)){
             //both userid and username are taken
-            res.redirect('/');
+            req.session.signup_error = 1;
 
-        else
+            res.redirect('/');
+        }
+            
+
+        else{
+            req.sessio.signup_error = 2;
             //only userid is taken
             res.redirect('/');
 
+        }
+            
+
     } else if (User.existsUsername(req.body.username)){
         //only username is taken
-            res.redirect('/');
+        req.session.signup_error = 3;
+
+        res.redirect('/');
 
 
     } else {
@@ -24,6 +34,8 @@ exports.addUser = function (req, res, next) {
         fs.writeFileSync('./data/user.json', JSON.stringify(users, null, 2), () =>{
         console.log(req)
         })
+        req.session.signup_error = 0;
+
         res.redirect('/');
 
 

@@ -22,16 +22,14 @@ body {
   padding: 10px;
   display:grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: 100px auto 50px;
+  grid-template-rows: 120px auto 50px;
   height: calc(100vh - 20px);
 }
 
 #header {
   /* background: #167d7f; */
   color: #000;
-  padding: 20px;
   display: grid;
-  grid-template-columns: auto 200px;
   text-align: left;
 }
 
@@ -78,9 +76,7 @@ border-radius: 7px;
 
   
 .filter { margin: 20px 0; }
-    .filter select { padding: 5px; }
-    .audio-item { margin: 10px 0; padding: 10px; border: 1px solid #ddd; }
-    .tags { color: gray; font-size: 0.9em; }
-    a { text-decoration: none; color: blue; }
-
-
+.filter select { padding: 5px; }
+.audio-item { margin: 10px 0; padding: 10px; border: 1px solid #ddd; }
+.tags { color: gray; font-size: 0.9em; }
+a { text-decoration: none; color: blue; }

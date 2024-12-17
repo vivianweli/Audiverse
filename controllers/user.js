@@ -14,16 +14,13 @@ exports.loginUser = function (req, res, next) {
         session.type = User.getType(req.body.userid)
         console.log(session.userid)
         console.log(session.username)
-
         res.redirect('/')
         //res.render('login-success.ejs', { 'userid': session.userid, error: false, errorType: "default", currentRoute: '/login'});
     }
     else {
-        console.log(req.body);
+        req.session.login_error = true;
         console.log(User.getName(req.body.userid)+ " do not match " + req.body.password)
         res.redirect('/')
-
-        //res.render('login-failure.ejs', { 'userid': session.userid, error: false, errorType: "default", currentRoute: '/login'});
     }
 }
 

@@ -110,15 +110,17 @@
     </div>
   </nav>
 
-  <% if (error) { %>
-    <div class="alert alert-danger" role="alert">
+  <% if (login_error) { %>
+    <div class="alert alert-danger alert-dismissiblefade show" role="alert">
         Invalid email or password.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
     </div>
  <% } %>
 
-<% switch (errorType) {
+<% switch (signup_error) {
     case 0: %>
-        <div class="alert alert-success alert-dismissiblefade show" role="alert">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
             User added successfully.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
@@ -132,7 +134,7 @@
     <% break;
 
     case 2: %>
-        <div class="alert alert-danger alert-dismissiblefade show " role="alert">
+        <div class="alert alert-danger alert-dismissible fade show " role="alert">
             Email already exists. Try Again.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 

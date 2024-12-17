@@ -8,7 +8,14 @@ const tags = data.tags; // Extract the "tags" array
 exports.uploadPage =  function (req, res, next) {
     session = req.session;
     if (req.session && req.session.userid) {
-        res.render("upload.ejs", { 'userid': session.userid, 'username': session.username, error: false, errorType: "default", currentRoute: '/upload', tags: tags});
+        res.render("upload.ejs", { 
+            'userid': session.userid, 
+            'username': session.username, 
+            currentRoute: '/upload', 
+            tags: tags,
+            login_error: false,
+            signup_error: "default"
+        });
     } else {
         res.redirect("/")
     }
@@ -44,7 +51,14 @@ exports.uploadNow = function (req, res, next) {
     console.log(req.session)
     console.log(req.session.userid)
     if (req.session && req.session.userid) {
-        res.render("upload.ejs", { 'userid': session.userid, 'username': session.username, error: false, errorType: "default", currentRoute: '/upload', tags: tags});
+        res.render("upload.ejs", { 
+            'userid': session.userid, 
+            'username': session.username, 
+            currentRoute: '/upload', 
+            tags: tags,
+            login_error: false,
+            signup_error: "default"
+        });
     } else {
         res.redirect("/")
     }

@@ -28,9 +28,9 @@ exports.getSoundbyId = function (req, res, next) {
                 tags: tags, // Pass the tags to the view
                 userid: session.userid, // Pass the logged-in user ID
                 username: session.username, // Pass the logged-in username (if needed)
-                error: false,
-                errorType: "default",
-                currentRoute: '/sound'
+                currentRoute: '/sound',
+                login_error: false,
+                signup_error: "default"
             });
         } else {
             // If no audio is found, send a 404 response
