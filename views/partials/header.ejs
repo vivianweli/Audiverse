@@ -13,7 +13,6 @@
 
             </ul>
         <% } else { %>
-            
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link <%= currentRoute === '/' ? 'active' : '' %>" aria-current="page" href="/">Home</a>
@@ -25,11 +24,9 @@
                     <a class="nav-link <%= currentRoute === '/upload' ? 'active' : '' %>" href="/upload">Upload Sound</a>
                 </li>
             </ul>
-            <div>
-                Welcome, <%- session.username %>! 
-            </div>
         <% } %>
-        <div class="d-grid gap-2 ms-2 d-md-block">
+
+        <div class="d-grid gap-2 d-md-block">
             <% if (!userid) { %>
                 <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#log-in-modal" type="button">Log In</button>
                 <!-- Login Modal -->
@@ -109,5 +106,10 @@
       </div>
     </div>
   </nav>
+  <% if (typeof userid === 'undefined') { %>
+    <p></p>
+<% } else { %>
+    <p>Welcome, <%- session.username %>! 
+<% } %>
 
   

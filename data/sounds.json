@@ -21,43 +21,6 @@
       "likes": 0,
       "duration": "Unknown",
       "audioFormat": "wav"
-    },
-    {
-      "id": "1734451786309",
-      "title": "bell",
-      "filePath": "1734451786309.mp3",
-      "tags": "nature",
-      "location": {
-        "latitude": "26.745610382199022",
-        "longitude": "-99.84375",
-        "city": "Unknown City",
-        "country": "Mexico"
-      },
-      "uploadDateTime": "2024-12-17T16:09:46.325Z",
-      "uploader": "Vivian",
-      "likes": 0,
-      "duration": "Unknown",
-      "audioFormat": "mp3"
-    },
-    {
-      "id": "1734453117813",
-      "title": "calm",
-      "filePath": "1734453117813.mp3",
-      "tags": [
-        "instrumental",
-        "classical"
-      ],
-      "location": {
-        "latitude": "12.897489183755892",
-        "longitude": "-87.89062500000001",
-        "city": "Unknown City",
-        "country": "Nicaragua"
-      },
-      "uploadDateTime": "2024-12-17T16:31:57.821Z",
-      "uploader": "Francisco",
-      "likes": 0,
-      "duration": "Unknown",
-      "audioFormat": "mp3"
     }
   ],
   "tags": [

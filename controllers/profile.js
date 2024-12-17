@@ -1,8 +1,7 @@
-const myMusic = require('../models/get-sounds')
+const User = require('../models/user')
 
 exports.getProfile = function (req, res, next) {
     session = req.session;
-    let my_sounds = myMusic.find(session.username);
     if (req.session && req.session.userid) {
         req.session.login_error = false;
         res.render("profile.ejs", { 
