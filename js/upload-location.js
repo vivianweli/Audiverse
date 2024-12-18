@@ -133,8 +133,8 @@ if (currentRoute === '/') {
     const soundId = item.querySelector('a').href.split('/').pop(); 
 
     item.addEventListener('mouseover', () => {
-      markers[soundId].openPopup();
       if (markers[soundId] && !markers[soundId]._popup._isOpen) {  
+        markers[soundId].openPopup();
         document.querySelectorAll('.audio-item').forEach(item => {
           item.classList.remove('highlight');
         });
