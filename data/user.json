@@ -64,5 +64,11 @@
     "password": "0",
     "username": "00",
     "type": "normal"
+  },
+  {
+    "userid": "mine@mine.com",
+    "password": "m",
+    "username": "Me",
+    "type": "normal"
   }
 ]

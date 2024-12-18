@@ -24,9 +24,10 @@
                     <a class="nav-link <%= currentRoute === '/upload' ? 'active' : '' %>" href="/upload">Upload Sound</a>
                 </li>
             </ul>
+            Welcome, <%- session.username %>! 
         <% } %>
 
-        <div class="d-grid gap-2 d-md-block">
+        <div class="d-grid gap-2 ms-2 d-md-block">
             <% if (!userid) { %>
                 <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#log-in-modal" type="button">Log In</button>
                 <!-- Login Modal -->
@@ -106,31 +107,10 @@
       </div>
     </div>
   </nav>
-  <% if (typeof userid === 'undefined') { %>
-    <p></p>
-<% } else { %>
-    <p>Welcome, <%- session.username %>! 
-<% } %>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  
-=======
-=======
->>>>>>> parent of 6248b6b (added signup and login error)
-  <% if (error) { %>
-    <div class="alert alert-danger" role="alert">
-        Invalid email or password.
-    </div>
- <% } %>
 
-<% switch (errorType) {
-    case 0: %>
-        <div class="alert alert-success alert-dismissiblefade show" role="alert">
-=======
   <% if (login_error) { %>
-    <div class="alert alert-danger alert-dismissiblefade show" role="alert">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
         Invalid email or password.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
@@ -140,7 +120,6 @@
 <% switch (signup_error) {
     case 0: %>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
->>>>>>> parent of 469beef (temp commit)
             User added successfully.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
@@ -154,11 +133,9 @@
     <% break;
 
     case 2: %>
-<<<<<<< HEAD
-        <div class="alert alert-danger alert-dismissiblefade show " role="alert">
-=======
+
+
         <div class="alert alert-danger alert-dismissible fade show " role="alert">
->>>>>>> parent of 469beef (temp commit)
             Email already exists. Try Again.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
@@ -175,9 +152,3 @@
 
     
 } %>
-
-
-<<<<<<< HEAD
->>>>>>> parent of 6248b6b (added signup and login error)
-=======
->>>>>>> parent of 469beef (temp commit)

@@ -1,15 +1,11 @@
 fs = require("fs");
 
-
-
 const data = JSON.parse(fs.readFileSync('./data/sounds.json'));
 const tags = data.tags; // Extract the "tags" array
 
 exports.uploadPage =  function (req, res, next) {
     session = req.session;
     if (req.session && req.session.userid) {
-<<<<<<< HEAD
-<<<<<<< HEAD
         res.render("upload.ejs", { 
             'userid': session.userid, 
             'username': session.username, 
@@ -17,14 +13,7 @@ exports.uploadPage =  function (req, res, next) {
             tags: tags,
             login_error: false,
             signup_error: "default"
-        });
-=======
-        res.render("upload.ejs", { 'userid': session.userid, 'username': session.username, error: false, errorType: "default", currentRoute: '/upload', tags: tags});
->>>>>>> parent of 6248b6b (added signup and login error)
-=======
-        res.render("upload.ejs", { 'userid': session.userid, 'username': session.username, error: false, errorType: "default", currentRoute: '/upload', tags: tags});
->>>>>>> parent of 6248b6b (added signup and login error)
-    } else {
+        }); } else {
         res.redirect("/")
     }
 };
@@ -59,8 +48,7 @@ exports.uploadNow = function (req, res, next) {
     console.log(req.session)
     console.log(req.session.userid)
     if (req.session && req.session.userid) {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         res.render("upload.ejs", { 
             'userid': session.userid, 
             'username': session.username, 
@@ -69,12 +57,6 @@ exports.uploadNow = function (req, res, next) {
             login_error: false,
             signup_error: "default"
         });
-=======
-        res.render("upload.ejs", { 'userid': session.userid, 'username': session.username, error: false, errorType: "default", currentRoute: '/upload', tags: tags});
->>>>>>> parent of 6248b6b (added signup and login error)
-=======
-        res.render("upload.ejs", { 'userid': session.userid, 'username': session.username, error: false, errorType: "default", currentRoute: '/upload', tags: tags});
->>>>>>> parent of 6248b6b (added signup and login error)
     } else {
         res.redirect("/")
     }

@@ -108,8 +108,6 @@ app.get('', (req, res) => {
         error: false,
         errorType: "default",
         currentRoute: '/',
-<<<<<<< HEAD
-<<<<<<< HEAD
         sounds: paginatedSounds,  
         currentPage: page,        
         totalPages: totalPages,   
@@ -118,27 +116,13 @@ app.get('', (req, res) => {
         login_error: null,
         signup_error: "default"  
     });
-=======
-=======
->>>>>>> parent of 6248b6b (added signup and login error)
-        sounds: paginatedSounds,  // Pass the paginated sounds
-        currentPage: page,        // Pass the current page number
-        totalPages: totalPages,   // Pass the total number of pages
-        selectedTag: selectedTag, // Pass the selected tag to the frontend
-        tags: sound_data.tags     // Pass the list of all tags
-      });
-<<<<<<< HEAD
->>>>>>> parent of 6248b6b (added signup and login error)
-=======
->>>>>>> parent of 6248b6b (added signup and login error)
+
     } else {
       res.render("index.ejs", {
         'userid': session.userid,  // No user if not logged in
         error: false,
         errorType: "default",
         currentRoute: '/',
-<<<<<<< HEAD
-<<<<<<< HEAD
         sounds: paginatedSounds,  
         currentPage: page,        
         totalPages: totalPages,   
@@ -146,19 +130,6 @@ app.get('', (req, res) => {
         tags: sound_data.tags,
         login_error: req.session.login_error,
         signup_error: req.session.signup_error
-
-=======
-=======
->>>>>>> parent of 6248b6b (added signup and login error)
-        sounds: paginatedSounds,  // Pass the paginated sounds
-        currentPage: page,        // Pass the current page number
-        totalPages: totalPages,   // Pass the total number of pages
-        selectedTag: selectedTag, // Pass the selected tag to the frontend
-        tags: sound_data.tags     // Pass the list of all tags
-<<<<<<< HEAD
->>>>>>> parent of 6248b6b (added signup and login error)
-=======
->>>>>>> parent of 6248b6b (added signup and login error)
       });
     }
   });

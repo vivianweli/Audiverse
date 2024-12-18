@@ -21,6 +21,7 @@ exports.loginUser = function (req, res, next) {
     else {
         console.log(req.body);
         console.log(User.getName(req.body.userid)+ " do not match " + req.body.password)
+        req.session.login_error = true;
         res.redirect('/')
 
         //res.render('login-failure.ejs', { 'userid': session.userid, error: false, errorType: "default", currentRoute: '/login'});
