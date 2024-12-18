@@ -83,3 +83,7 @@ border-radius: 7px;
     .tags { color: gray; font-size: 0.9em; }
     a { text-decoration: none; color: blue; }
  
+.audio-item.highlight {
+      background-color: #ffe5e5; /* Light red or any color you like */
+      border: 1px solid #ff0000; /* Red border */
+    }

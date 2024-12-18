@@ -29,8 +29,18 @@ if (currentRoute === '/') {
   
         // Ajouter un événement pour recentrer et zoomer sur le marqueur au clic
         marker.on('click', () => {
-          map.flyTo([parseFloat(latitude), parseFloat(longitude)], 8); // Centrer avec un zoom à 12
+          map.flyTo([parseFloat(latitude), parseFloat(longitude)], 6); // Centrer avec un zoom à 6
           marker.openPopup(); // Afficher le popup
+          document.querySelectorAll('.audio-item').forEach(item => {
+            item.classList.remove('highlight');
+          });
+      
+          // Highlight the corresponding list item
+          const listItem = document.querySelector(`.audio-item[data-id="${sound.id}"]`);
+          if (listItem) {
+            listItem.classList.add('highlight');
+            listItem.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the list item
+          }
         });
         markers[sound.id] = marker;
       }
@@ -40,11 +50,9 @@ if (currentRoute === '/') {
   addSoundMarkers(filteredSounds);
   document.querySelectorAll('.audio-item').forEach(item => {
     const soundId = item.querySelector('a').href.split('/').pop(); 
-    console.log("aaaa");
-
     item.addEventListener('mouseover', () => {
       if (markers[soundId] && !markers[soundId]._popup._isOpen) {  
-        map.flyTo(markers[soundId].getLatLng(), 8);  
+        //map.flyTo(markers[soundId].getLatLng(), 8);  
         markers[soundId].openPopup();
       }
     });
@@ -60,7 +68,7 @@ if (currentRoute === '/') {
     
         markers[soundId]._popup._isOpen = true;
     
-        map.flyTo(markers[soundId].getLatLng(), 8);  
+        map.flyTo(markers[soundId].getLatLng(), 6);  
     
       }
     });
@@ -106,7 +114,21 @@ if (currentRoute === '/') {
         const marker = L.marker([parseFloat(latitude), parseFloat(longitude)])
           .addTo(map)
           .bindPopup(popupContent);
-
+          
+          marker.on('click', () => {
+            map.flyTo([parseFloat(latitude), parseFloat(longitude)], 6);
+            // Remove highlight from all items
+            document.querySelectorAll('.audio-item').forEach(item => {
+              item.classList.remove('highlight');
+            });
+    
+            // Highlight the corresponding list item
+            const listItem = document.querySelector(`.audio-item[data-id="${sound.id}"]`);
+            if (listItem) {
+              listItem.classList.add('highlight');
+              listItem.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the list item
+            }
+          });
         // Store the marker by sound ID
         markers[sound.id] = marker;
       }

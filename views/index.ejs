@@ -20,12 +20,12 @@
 </div>
 
 <!-- Audio List -->
-<div id="audio-list">
+<div id="audio-list" >
   <% if (sounds.length === 0) { %>
     <p>No audio available for this tag.</p>
   <% } else { %>
     <% sounds.forEach(audio => { %>
-      <div class="audio-item" data-title="<%= audio.title.toLowerCase() %>">
+      <div class="audio-item" data-title="<%= audio.title.toLowerCase() %>" data-id="<%= audio.id %>">
         <h2><a href="/sound/<%= audio.id %>" onclick="event.preventDefault();"><%= audio.title %></a></h2>
         <p class="tags">
           <% if (!audio.tags || audio.tags === '') { %>
