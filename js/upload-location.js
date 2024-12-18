@@ -177,7 +177,6 @@ if (currentRoute === '/') {
       <b>${userSounds.title}</b><br>
       <i>Uploaded by:</i> ${userSounds.uploader}<br>
       Location: ${city}, ${country}<br>
-      <a href="/sound/${userSounds.id}">View Details</a>
     `;
 
     const marker = L.marker([parseFloat(latitude), parseFloat(longitude)])
