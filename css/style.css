@@ -84,3 +84,17 @@ border-radius: 7px;
     a { text-decoration: none; color: blue; }
 
 
+    /* Add this CSS to style the custom markers */
+.red-marker div {
+  background-color: red;
+  width: 20px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.default-marker div {
+  background-color: blue;
+  width: 20px;
+  height: 30px;
+  border-radius: 50%;
+}
