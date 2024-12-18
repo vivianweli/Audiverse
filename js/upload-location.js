@@ -1,14 +1,13 @@
 const API_KEY = '7ce0cf7b71044478b2daf6bacd2d578b';
 
 // Initialize the map
-const map = L.map('map').setView([0, 0], 2); // Vue globale
+const map = L.map('map').setView([0, 0], 2); 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
 
 
-// Logique en fonction de la vue actuelle
 if (currentRoute === '/') {
   const markers = {};
   function addSoundMarkers(sounds) {
@@ -22,37 +21,32 @@ if (currentRoute === '/') {
           <a href="/sound/${sound.id}">View Details</a>
         `;
   
-        // Créer le marqueur
         const marker = L.marker([parseFloat(latitude), parseFloat(longitude)])
           .addTo(map)
           .bindPopup(popupContent);
   
-        // Ajouter un événement pour recentrer et zoomer sur le marqueur au clic
         marker.on('click', () => {
-          map.flyTo([parseFloat(latitude), parseFloat(longitude)], 6); // Centrer avec un zoom à 6
-          marker.openPopup(); // Afficher le popup
+          map.flyTo([parseFloat(latitude), parseFloat(longitude)], 6); 
+          marker.openPopup(); 
           document.querySelectorAll('.audio-item').forEach(item => {
             item.classList.remove('highlight');
           });
       
-          // Highlight the corresponding list item
           const listItem = document.querySelector(`.audio-item[data-id="${sound.id}"]`);
           if (listItem) {
             listItem.classList.add('highlight');
-            listItem.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the list item
+            listItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
           }
         });
         markers[sound.id] = marker;
       }
     });
   }
-  // Si on est sur la page principale (index.ejs), afficher les marqueurs
   addSoundMarkers(filteredSounds);
   document.querySelectorAll('.audio-item').forEach(item => {
     const soundId = item.querySelector('a').href.split('/').pop(); 
     item.addEventListener('mouseover', () => {
       if (markers[soundId] && !markers[soundId]._popup._isOpen) {  
-        //map.flyTo(markers[soundId].getLatLng(), 8);  
         markers[soundId].openPopup();
         document.querySelectorAll('.audio-item').forEach(item => {
           item.classList.remove('highlight');
@@ -83,7 +77,7 @@ if (currentRoute === '/') {
     });
   });
 } else if (currentRoute === '/upload') {
-  // Si on est sur la page upload.ejs, permettre la sélection d'une localisation
+
   let marker;
 
   map.on('click', async (e) => {
@@ -94,14 +88,13 @@ if (currentRoute === '/') {
       document.getElementById('latitude').value = lat;
       document.getElementById('longitude').value = lng;
 
-      // Ajouter un marqueur temporaire
       if (marker) map.removeLayer(marker);
       marker = L.marker([lat, lng]).addTo(map).bindPopup(location).openPopup();
     }
   });
 
 }else if (currentRoute === '/profile') {
-  const markers = {}; // Object to store markers by sound ID
+  const markers = {}; 
 
   function addUserSoundMarkers(sounds) {
     sounds.forEach(sound => {
@@ -113,26 +106,22 @@ if (currentRoute === '/') {
           <a href="/sound/${sound.id}">View Details</a>
         `;
         
-        // Create the marker and add to the map
         const marker = L.marker([parseFloat(latitude), parseFloat(longitude)])
           .addTo(map)
           .bindPopup(popupContent);
           
           marker.on('click', () => {
             map.flyTo([parseFloat(latitude), parseFloat(longitude)], 6);
-            // Remove highlight from all items
             document.querySelectorAll('.audio-item').forEach(item => {
               item.classList.remove('highlight');
             });
     
-            // Highlight the corresponding list item
             const listItem = document.querySelector(`.audio-item[data-id="${sound.id}"]`);
             if (listItem) {
               listItem.classList.add('highlight');
-              listItem.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the list item
+              listItem.scrollIntoView({ behavior: 'smooth', block: 'center' }); 
             }
           });
-        // Store the marker by sound ID
         markers[sound.id] = marker;
       }
     });
@@ -144,6 +133,7 @@ if (currentRoute === '/') {
     const soundId = item.querySelector('a').href.split('/').pop(); 
 
     item.addEventListener('mouseover', () => {
+      markers[soundId].openPopup();
       if (markers[soundId] && !markers[soundId]._popup._isOpen) {  
         document.querySelectorAll('.audio-item').forEach(item => {
           item.classList.remove('highlight');
@@ -151,9 +141,9 @@ if (currentRoute === '/') {
         const listItem = document.querySelector(`.audio-item[data-id="${sound.id}"]`);
         if (listItem) {
           listItem.classList.add('highlight');
-          listItem.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the list item
+          listItem.scrollIntoView({ behavior: 'smooth', block: 'center' }); 
         }
-        markers[soundId].openPopup();
+        
       }
     });
     
@@ -181,7 +171,6 @@ if (currentRoute === '/') {
   });
 }else if (currentRoute === '/sound') {
 
-  //const soundsData = JSON.parse(JSON.parse(fs.readFileSync('./data/sounds.json'))).sounds.find(audio => audio.id == id);
   if (userSounds.location && userSounds.location.latitude && userSounds.location.longitude) {
     const { latitude, longitude, city, country } = userSounds.location;
     const popupContent = `
@@ -191,18 +180,15 @@ if (currentRoute === '/') {
       <a href="/sound/${userSounds.id}">View Details</a>
     `;
 
-    // Créer le marqueur
     const marker = L.marker([parseFloat(latitude), parseFloat(longitude)])
       .addTo(map)
       .bindPopup(popupContent);
 
-    // Centrer et zoomer sur le marqueur
     map.setView([parseFloat(latitude), parseFloat(longitude)], 6);
     marker.openPopup();
   }
 }
 
-// Fonction pour récupérer la localisation (OpenCage API)
 async function getLocationFromCoordinates(lat, lng) {
   try {
     const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lng}&key=${API_KEY}`);
