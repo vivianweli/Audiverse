@@ -2,6 +2,12 @@
   <label>Audio List</label>
 </h1>
 
+<!-- Search Bar -->
+<div class="search-bar">
+  <label for="search-input">Search by Title:</label>
+  <input type="text" id="search-input" onkeyup="searchByTitle()" placeholder="Search for audio..." />
+</div>
+
 <!-- Tag Filter -->
 <div class="filter">
   <label for="tag-filter">Filter by tag:</label>
@@ -19,9 +25,8 @@
     <p>No audio available for this tag.</p>
   <% } else { %>
     <% sounds.forEach(audio => { %>
-      <div class="audio-item">
-        <!--<h2><a href="/sound/<%= audio.id %>"><%= audio.title %></a></h2>-->
-        <h2><a href="/sound/<%= audio.id %>"onclick="event.preventDefault();"><%= audio.title %></a></h2>
+      <div class="audio-item" data-title="<%= audio.title.toLowerCase() %>">
+        <h2><a href="/sound/<%= audio.id %>" onclick="event.preventDefault();"><%= audio.title %></a></h2>
         <p class="tags">
           <% if (!audio.tags || audio.tags === '') { %>
             No tags
@@ -56,9 +61,22 @@
     const selectedTag = document.getElementById('tag-filter').value;
     window.location.href = `?page=1&tag=${selectedTag}`;  // Reset to page 1 and apply the selected tag
   }
-</script>
 
-<script>
+  // Handle search by title
+  function searchByTitle() {
+    const searchQuery = document.getElementById('search-input').value.toLowerCase();
+    const audioItems = document.querySelectorAll('.audio-item');
+
+    audioItems.forEach(item => {
+      const title = item.getAttribute('data-title');
+      if (title.includes(searchQuery)) {
+        item.style.display = ''; // Show item if title matches search
+      } else {
+        item.style.display = 'none'; // Hide item if title doesn't match search
+      }
+    });
+  }
   const currentRoute = '/';
   const filteredSounds = <%- JSON.stringify(sounds) %>;
 </script>
+
