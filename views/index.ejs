@@ -3,10 +3,14 @@
 </h1>
 
 <!-- Search Bar -->
-<div class="search-bar">
+<!-- <div class="search-bar">
   <label for="search-input">Search by Title:</label>
   <input type="text" id="search-input" onkeyup="searchByTitle()" placeholder="Search for audio..." />
-</div>
+</div> -->
+<form class="d-flex ms-1" role="search" action="/search" method="get">
+    <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
 
 <!-- Tag Filter -->
 <div class="filter">
@@ -62,20 +66,6 @@
     window.location.href = `?page=1&tag=${selectedTag}`;  // Reset to page 1 and apply the selected tag
   }
 
-  // Handle search by title
-  function searchByTitle() {
-    const searchQuery = document.getElementById('search-input').value.toLowerCase();
-    const audioItems = document.querySelectorAll('.audio-item');
-
-    audioItems.forEach(item => {
-      const title = item.getAttribute('data-title');
-      if (title.includes(searchQuery)) {
-        item.style.display = ''; // Show item if title matches search
-      } else {
-        item.style.display = 'none'; // Hide item if title doesn't match search
-      }
-    });
-  }
   const currentRoute = '/';
   const filteredSounds = <%- JSON.stringify(sounds) %>;
 </script>

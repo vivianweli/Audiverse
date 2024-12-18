@@ -93,7 +93,7 @@ if (currentRoute === '/') {
     }
   });
 
-}else if (currentRoute === '/profile') {
+}else if (currentRoute === '/profile' || currentRoute === '/search') {
   const markers = {}; 
 
   function addUserSoundMarkers(sounds) {

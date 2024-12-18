@@ -1,11 +1,12 @@
-const myMusic = require('../models/get-sounds')
 const fs = require("fs");
-let sounds_data = JSON.parse(fs.readFileSync('./data/sounds.json'));
 const path = require("path");
+
+const mySound = require('../models/get-sounds')
+let sounds_data = JSON.parse(fs.readFileSync('./data/sounds.json'));
 
 exports.getProfile = function (req, res, next) {
     session = req.session;
-    my_sounds = myMusic.find(session.username);
+    my_sounds = mySound.find(session.username);
     if (req.session && req.session.userid) {
         res.render("profile.ejs", { 
             'userid': session.userid, 
@@ -23,7 +24,7 @@ exports.getProfile = function (req, res, next) {
 exports.deleteSound = function(req, res, next){
     session = req.session;
 
-    sounds_data.sounds = myMusic.delete(req.body.audioID);
+    sounds_data.sounds = mySound.delete(req.body.audioID);
     fs.writeFileSync('./data/sounds.json', JSON.stringify(sounds_data, null, 2), () =>{
         console.log(req)
     })
@@ -34,7 +35,7 @@ exports.deleteSound = function(req, res, next){
             console.log('File deleted successfully');
         }
     });
-    my_sounds = myMusic.find(session.username);
+    my_sounds = mySound.find(session.username);
     if (req.session && req.session.userid) {
         res.render("profile.ejs", { 
             'userid': session.userid, 

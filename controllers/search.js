@@ -1,5 +1,14 @@
-var session
+const mySound = require('../models/get-sounds')
+
 exports.search = function (req, res, next) {
-        session = req.session
-        res.render("search.ejs", { 'userid': session.userid, error: false, errorType: "default", currentRoute: '/search'})
+        session = req.session;
+        let searchResult = mySound.search(req.query.search);
+        console.log(searchResult);
+        res.render("search.ejs", { 
+            'userid': session.userid, 
+            currentRoute: '/search',
+            login_error: false,
+            signup_error: "default",
+            searchedSounds: searchResult
+        })
 }

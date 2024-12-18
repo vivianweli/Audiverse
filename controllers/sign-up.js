@@ -37,7 +37,7 @@ exports.addUser = function (req, res, next) {
         req.session.signup_error = 0;
         req.session.login_error = false;
 
-        users.push({"userid":req.body.userid, "password":req.body.password, "username":req.body.username, "type":"normal"})   
+        users.push({"userid":req.body.userid, "password":req.body.password, "username":req.body.username})   
         console.log(users)
         fs.writeFileSync('./data/user.json', JSON.stringify(users, null, 2), () =>{
         console.log(req)

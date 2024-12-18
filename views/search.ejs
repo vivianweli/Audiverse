@@ -1,1 +1,27 @@
-Search
+<h2>Search Results</h2>
+<!-- Audio List -->
+<div id="audio-list">
+    <% if (searchedSounds.length === 0) { %>
+      <p> No audio matching your query.</p>
+    <% } else { %>
+      <% searchedSounds.forEach(audio => { %>
+        <div class="audio-item" data-id="<%= audio.id %>">
+          <h2><a href="/sound/<%= audio.id %>"><%= audio.title %></a></h2>
+          <p class="tags">
+            <% if (!audio.tags || audio.tags === '') { %>
+              No tags
+            <% } else if (Array.isArray(audio.tags)) { %>
+              Tags: <%= audio.tags.join(', ') %>
+            <% } else { %>
+              Tag: <%= audio.tags %>
+            <% } %>
+          </p>
+          <p>Uploader: <%= audio.uploader %></p>
+        </div>
+      <% }); %>
+    <% } %>
+  </div>
+<script>
+    const currentRoute = "/search";
+    const userSounds = <%- JSON.stringify(searchedSounds) %>;
+</script>

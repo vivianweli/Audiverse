@@ -2,73 +2,27 @@
   {
     "userid": "v@v.com",
     "password": "v",
-    "username": "Vivian",
-    "type": "admin"
+    "username": "Vivian"
+
   },
   {
     "userid": "f@f.com",
     "password": "f",
-    "username": "Francisco",
-    "type": "admin"
+    "username": "Francisco"
   },
   {
     "userid": "g@g.com",
     "password": "g",
-    "username": "gg",
-    "type": "normal"
+    "username": "gg"
   },
   {
     "userid": "apple@gmail.com",
     "password": "a",
-    "username": "apple",
-    "type": "normal"
+    "username": "apple"
   },
   {
     "userid": "banana@b.com",
     "password": "b",
-    "username": "bb",
-    "type": "normal"
-  },
-  {
-    "userid": "test@test.com",
-    "password": "t",
-    "username": "testing",
-    "type": "normal"
-  },
-  {
-    "userid": "test2@test2.com",
-    "password": "t",
-    "username": "testing2",
-    "type": "normal"
-  },
-  {
-    "userid": "test3@test3.com",
-    "password": "t",
-    "username": "test3",
-    "type": "normal"
-  },
-  {
-    "userid": "s@s.com",
-    "password": "s",
-    "username": "ss",
-    "type": "normal"
-  },
-  {
-    "userid": "u@u.com",
-    "password": "u",
-    "username": "uu",
-    "type": "normal"
-  },
-  {
-    "userid": "0@0.com",
-    "password": "0",
-    "username": "00",
-    "type": "normal"
-  },
-  {
-    "userid": "mine@mine.com",
-    "password": "m",
-    "username": "Me",
-    "type": "normal"
+    "username": "bb"
   }
 ]

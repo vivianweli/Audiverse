@@ -90,8 +90,6 @@ app.get('', (req, res) => {
       res.render("index.ejs", {
         'userid': session.userid,
         'username': session.username,
-        error: false,
-        errorType: "default",
         currentRoute: '/',
         sounds: paginatedSounds,  
         currentPage: page,        
@@ -105,8 +103,6 @@ app.get('', (req, res) => {
     } else {
       res.render("index.ejs", {
         'userid': session.userid,  // No user if not logged in
-        error: false,
-        errorType: "default",
         currentRoute: '/',
         sounds: paginatedSounds,  
         currentPage: page,        
