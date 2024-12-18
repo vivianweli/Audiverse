@@ -43,8 +43,6 @@ exports.uploadNow = function (req, res, next) {
     })   
     fs.writeFile('./data/sounds.json', JSON.stringify(sounds, null, 2), () =>{})
 
-    console.log(req.session)
-    console.log(req.session.userid)
     if (req.session && req.session.userid) {
 
         res.render("upload.ejs", { 

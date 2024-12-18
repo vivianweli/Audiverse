@@ -2,26 +2,20 @@
   <label>Audio List</label>
 </h1>
 
-<!-- Search Bar -->
-<!-- <div class="search-bar">
-  <label for="search-input">Search by Title:</label>
-  <input type="text" id="search-input" onkeyup="searchByTitle()" placeholder="Search for audio..." />
-</div> -->
-<form class="d-flex ms-1" role="search" action="/search" method="get">
-    <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
-  </form>
 
-<!-- Tag Filter -->
-<div class="filter">
-  <label for="tag-filter">Filter by tag:</label>
-  <select id="tag-filter" onchange="filterByTag()">
-    <option value="all" <%= selectedTag === 'all' ? 'selected' : '' %>>All</option>
-    <% tags.forEach(tag => { %>
-      <option value="<%= tag %>" <%= selectedTag === tag ? 'selected' : '' %>><%= tag %></option>
-    <% }); %>
-  </select>
-</div>
+  <!-- Tag Filter -->
+  <div class="input-group mb-3">
+    <label class="input-group-text" for="tag-filter">Filter by Tag</label>
+    <select id="tag-filter" class="form-select" onchange="filterByTag()">
+        <option value="all" <%= selectedTag === 'all' ? 'selected' : '' %>>All</option>
+        <% tags.forEach(tag => { %>
+            <option value="<%= tag %>" <%= selectedTag === tag ? 'selected' : '' %>><%= tag %></option>
+          <% }); %>
+        </select>
+  </div>
+
+  
+
 
 <!-- Audio List -->
 <div id="audio-list" >

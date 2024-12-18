@@ -9,6 +9,7 @@ exports.search = function (req, res, next) {
             currentRoute: '/search',
             login_error: false,
             signup_error: "default",
+            query: req.query.search,
             searchedSounds: searchResult
         })
 }
