@@ -16,7 +16,6 @@ exports.loginUser = function (req, res, next) {
         console.log(session.username)
 
         res.redirect('/')
-        //res.render('login-success.ejs', { 'userid': session.userid, error: false, errorType: "default", currentRoute: '/login'});
     }
     else {
         console.log(req.body);
@@ -24,7 +23,6 @@ exports.loginUser = function (req, res, next) {
         req.session.login_error = true;
         res.redirect('/')
 
-        //res.render('login-failure.ejs', { 'userid': session.userid, error: false, errorType: "default", currentRoute: '/login'});
     }
 }
 

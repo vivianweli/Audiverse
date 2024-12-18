@@ -3,10 +3,10 @@ path = require("path")
 // Set up multer to store files
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, 'uploads/'); // Folder where files will be stored
+      cb(null, 'uploads/'); 
     },
     filename: (req, file, cb) => {
-      cb(null, Date.now() + path.extname(file.originalname)); // File name with timestamp
+      cb(null, Date.now() + path.extname(file.originalname)); 
     },
   });
   

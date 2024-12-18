@@ -70,37 +70,22 @@ app.set('layout', './layouts/base-layout.ejs')
 app.get('', (req, res) => {
     session = req.session;
     
-    // Number of items per page
+    // Pagination calculation
     const soundsPerPage = 5;
-    
-    // Get current page number from query, default to 1 if not present
     const page = parseInt(req.query.page) || 1;
-    
-    // Get the tag filter from the query string, default to 'all' if not present
-    const selectedTag = req.query.tag || 'all';
-    
-    // DATA
-    let sound_data = JSON.parse(fs.readFileSync('./data/sounds.json'));
-    // Filter the sounds based on the selected tag
+    const selectedTag = req.query.tag || 'all'; 
+    let sound_data = JSON.parse(fs.readFileSync('./data/sounds.json')); // DATA
     let filteredSounds = sound_data.sounds;
-  
     if (selectedTag !== 'all') {
       filteredSounds = sound_data.sounds.filter(audio => {
         let audioTags = Array.isArray(audio.tags) ? audio.tags : (audio.tags ? audio.tags.split(',').map(tag => tag.trim()) : []);
         return audioTags.includes(selectedTag);
       });
     }
-  
-    // Calculate the starting index of the current page
     const startIndex = (page - 1) * soundsPerPage;
-  
-    // Get the sounds to display for the current page
     const paginatedSounds = filteredSounds.slice(startIndex, startIndex + soundsPerPage);
-  
-    // Calculate the total number of pages
     const totalPages = Math.ceil(filteredSounds.length / soundsPerPage);
   
-    // Render the page with the paginated and filtered sounds
     if (session.userid) {
       res.render("index.ejs", {
         'userid': session.userid,

@@ -39,8 +39,6 @@ exports.uploadNow = function (req, res, next) {
         },
         "uploadDateTime": new Date().toISOString(),
         "uploader": req.body.uploader,
-        "likes": 0,
-        "duration": "Unknown",
         "audioFormat": format
     })   
     fs.writeFile('./data/sounds.json', JSON.stringify(sounds, null, 2), () =>{})
