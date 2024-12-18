@@ -12,4 +12,13 @@ module.exports = class music {
         return audio;  
 
     }
+    static delete = function(audioID){
+        const soundsData = this.loadSounds(); 
+        const sounds = soundsData.sounds;    
+        const audio = sounds.filter(audio => audio.id != audioID);
+
+        return audio;
+
+
+    }
 }

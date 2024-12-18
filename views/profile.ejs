@@ -20,6 +20,11 @@
             <% } %>
           </p>
           <p>Uploader: <%= audio.uploader %></p>
+          <form action="/profile" method="post">
+            <input type="hidden" name="audioID" value="<%=audio.id%>">
+            <input type="hidden" name="filePath" value="<%= audio.filePath %>">
+            <button type="submit"  class="btn btn-danger"> Delete</button>
+          </form>
         </div>
       <% }); %>
     <% } %>
@@ -28,4 +33,4 @@
   <script>
     const currentRoute = '/profile';
     const userSounds = <%- JSON.stringify(my_sounds) %>;
-  </script>
+      </script>
