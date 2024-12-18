@@ -54,6 +54,9 @@ if (currentRoute === '/') {
       if (markers[soundId] && !markers[soundId]._popup._isOpen) {  
         //map.flyTo(markers[soundId].getLatLng(), 8);  
         markers[soundId].openPopup();
+        document.querySelectorAll('.audio-item').forEach(item => {
+          item.classList.remove('highlight');
+        });
       }
     });
     
@@ -142,6 +145,14 @@ if (currentRoute === '/') {
 
     item.addEventListener('mouseover', () => {
       if (markers[soundId] && !markers[soundId]._popup._isOpen) {  
+        document.querySelectorAll('.audio-item').forEach(item => {
+          item.classList.remove('highlight');
+        });
+        const listItem = document.querySelector(`.audio-item[data-id="${sound.id}"]`);
+        if (listItem) {
+          listItem.classList.add('highlight');
+          listItem.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the list item
+        }
         markers[soundId].openPopup();
       }
     });
@@ -168,6 +179,27 @@ if (currentRoute === '/') {
       }
     });
   });
+}else if (currentRoute === '/sound') {
+
+  //const soundsData = JSON.parse(JSON.parse(fs.readFileSync('./data/sounds.json'))).sounds.find(audio => audio.id == id);
+  if (userSounds.location && userSounds.location.latitude && userSounds.location.longitude) {
+    const { latitude, longitude, city, country } = userSounds.location;
+    const popupContent = `
+      <b>${userSounds.title}</b><br>
+      <i>Uploaded by:</i> ${userSounds.uploader}<br>
+      Location: ${city}, ${country}<br>
+      <a href="/sound/${userSounds.id}">View Details</a>
+    `;
+
+    // Créer le marqueur
+    const marker = L.marker([parseFloat(latitude), parseFloat(longitude)])
+      .addTo(map)
+      .bindPopup(popupContent);
+
+    // Centrer et zoomer sur le marqueur
+    map.setView([parseFloat(latitude), parseFloat(longitude)], 6);
+    marker.openPopup();
+  }
 }
 
 // Fonction pour récupérer la localisation (OpenCage API)
