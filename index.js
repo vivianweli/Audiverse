@@ -113,7 +113,7 @@ app.get('', (req, res) => {
         totalPages: totalPages,   
         selectedTag: selectedTag, 
         tags: sound_data.tags,     
-        login_error: null,
+        login_error: false,
         signup_error: "default"  
     });
 

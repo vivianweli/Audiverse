@@ -4,13 +4,11 @@
       <p><strong>Location:</strong> <%= audio.location.city %>, <%= audio.location.country %></p>
 
       <% if (audio.tags && audio.tags.length > 0) { %>
-        <p><strong>Tags:</strong> <%= audio.tags %></p>
+        <p><strong>Tags:</strong> <%= audio.tags %> </p>
       <% } else { %>
         <p><strong>Tags:</strong> No tags</p>
       <% } %>
 
-      <p><strong>Likes:</strong> <%= audio.likes %></p>
-      <p><strong>Duration:</strong> <%= audio.duration %></p>
       <p><strong>Uploaded on:</strong> <%= audio.uploadDateTime %></p>
 
       <audio controls>
