@@ -36,13 +36,14 @@ The main objective is to allow users to explore sounds recorded around the world
 - **UI Features:**  
   - Hovering over navigation items adds a blue shadow.  
   - The current active page is bolded in the navigation bar.  
-<img width="935" alt="image" src="https://github.com/user-attachments/assets/e113b543-37fe-47de-9d82-ff6d1a05a08d" />
+  <img width="935" alt="image" src="https://github.com/user-attachments/assets/e113b543-37fe-47de-9d82-ff6d1a05a08d" />
 
 ---
 
 ### **2. Home Page (Main Page)**  
-**Description:** An interactive map (Leaflet) lets users discover sounds via markers. A corresponding sound list is displayed on the left. A search bar is available.  
 <img width="709" alt="image" src="https://github.com/user-attachments/assets/a1b93824-75a0-48d2-b275-947dbd7bcac2" />
+
+**Description:** An interactive map (Leaflet) lets users discover sounds via markers. A corresponding sound list is displayed on the left. A search bar is available.  
 
 **Functionalities:**  
 - **Browse the sounds (as map markers) by navigating the map**  
@@ -118,10 +119,11 @@ The main objective is to allow users to explore sounds recorded around the world
 
   - Hovering over a list item opens up the popup details of the marker on the map and the map shifts to show the marker in its view.
     
-<img width="931" alt="image" src="https://github.com/user-attachments/assets/253a5a85-db38-4f58-885a-de45b4f70aa5" />
+  <img width="931" alt="image" src="https://github.com/user-attachments/assets/253a5a85-db38-4f58-885a-de45b4f70aa5" />
     
   - Clicking a list item centers the marker on the map with the popup open.
-<img width="937" alt="image" src="https://github.com/user-attachments/assets/5016a813-6581-4184-832c-a29e258e3973" />
+  
+  <img width="937" alt="image" src="https://github.com/user-attachments/assets/5016a813-6581-4184-832c-a29e258e3973" />
 
 
 ### **2. Map and Upload Location on Upload Page**  
@@ -142,7 +144,6 @@ The main objective is to allow users to explore sounds recorded around the world
 - Can browse the map and listen to sounds.  
 - Can upload sounds, view their profile, and delete their own uploads.  
 
----
 
 ## **Data Structure**  
 
@@ -169,7 +170,6 @@ Users are represented by the following properties:
 - **Username:** Defined by the user.  
 - **Password:** Defined by the user.  
 
----
 
 ## **Technical Architecture**  
 
@@ -191,5 +191,6 @@ Users are represented by the following properties:
 ### **4. Authentication:**  
 - **Session management** ensures secure user login and role-based access.  
 
+---
 ## Made By
 Vivian LI and Francisco AYORA DUARTE
