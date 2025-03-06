@@ -162,7 +162,6 @@ This JSON file contains two arrays: `sound` and `tags`.
 #### **Tags (Predefined in Project):**  
 - `"nature"`, `"forest"`, `"relaxing"`, `"water"`, `"ocean"`, `"urban"`, `"rain"`, `"animals"`, `"birds"`, `"wind"`, `"instrumental"`, `"classical"`, `"rock"`, `"ambient"`, `"white noise"`, `"thunderstorm"`, `"fireplace"`, `"cityscape"`, `"meditation"`, `"sports"`, `"traffic"`, `"festival"`, `"mountains"`  
 
----
 
 ### **2. `users.json`**  
 Users are represented by the following properties:  
@@ -191,3 +190,6 @@ Users are represented by the following properties:
 
 ### **4. Authentication:**  
 - **Session management** ensures secure user login and role-based access.  
+
+## Made By
+Vivian LI and Francisco AYORA DUARTE
