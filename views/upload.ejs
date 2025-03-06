@@ -1,0 +1,39 @@
+<h1>Upload an Audio</h1>
+<form id="upload-form" enctype="multipart/form-data" method="POST" action="/upload">
+    <label for="title" class="form-label">Title: </label>
+    <input type="text" class="form-control" id="title" name="title" required>
+
+    <label for="location" class="form-label mt-2">Location (Click on the map): </label>
+    <input type="text" class="form-control" id="location" name="location" readonly required>
+    <input type="hidden" id="latitude" name="latitude">
+    <input type="hidden" id="longitude" name="longitude">
+
+  <div class="mb-3">
+    <label for="formFile" class="form-label mt-2">Audio File:</label>
+    <input class="form-control" type="file" id="formFile" id="audio-file" name="audio" accept="audio/*" required>
+  </div>
+
+    <label for="uploader" class="form-label">Uploader Name: </label>
+    <input type="text" class="form-control mb-2" id="uploader" name="uploader" value=<%=username%> readonly>
+
+    <label class="form-label">Tags:</label>
+    <div class="container-sm border">
+        <% if (tags && tags.length) { %>
+            <% tags.forEach(tag => { %>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="tags" value="<%= tag %>" id="tag-<%= tag %>">
+                    <label class="form-check-label" for="tag-<%= tag %>">
+                        <%= tag %>
+                    </label>
+                </div>
+            <% }); %>
+        <% } %>
+    </div>
+
+
+    <button id="sss", class="mt-2 btn btn-primary" type="submit">Upload</button>
+
+</form>
+<script>
+  const currentRoute = '/upload';
+</script>

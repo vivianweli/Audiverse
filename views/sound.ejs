@@ -1,0 +1,25 @@
+    <% if (audio) { %>
+      <h2><%= audio.title %></h2>
+      <p><strong>Uploader:</strong> <%= audio.uploader %></p>
+      <p><strong>Location:</strong> <%= audio.location.city %>, <%= audio.location.country %></p>
+
+      <% if (audio.tags && audio.tags.length > 0) { %>
+        <p><strong>Tags:</strong> <%= audio.tags %> </p>
+      <% } else { %>
+        <p><strong>Tags:</strong> No tags</p>
+      <% } %>
+
+      <p><strong>Uploaded on:</strong> <%= audio.uploadDateTime %></p>
+
+      <audio controls>
+        <source src="/uploads/<%= audio.filePath %>" type="audio/<%= audio.audioFormat %>">
+        Your browser does not support the audio element.
+      </audio>
+    <% } else { %>
+      <p>Audio not found.</p>
+    <% } %>
+
+    <script>
+        const currentRoute = '/sound';
+        const userSounds = <%- JSON.stringify(audio) %>;
+    </script>

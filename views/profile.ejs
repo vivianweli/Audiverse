@@ -1,0 +1,36 @@
+<div>Name: <%=session.username%></div>
+<div>Email: <%=session.userid%></div>
+
+<h2>My Sounds</h2>
+<!-- Audio List -->
+<div id="audio-list">
+    <% if (my_sounds.length === 0) { %>
+      <p>You uploaded no audio.</p>
+    <% } else { %>
+      <% my_sounds.forEach(audio => { %>
+        <div class="audio-item" data-id="<%= audio.id %>">
+          <h2><a href="/sound/<%= audio.id %>"><%= audio.title %></a></h2>
+          <p class="tags">
+            <% if (!audio.tags || audio.tags === '') { %>
+              No tags
+            <% } else if (Array.isArray(audio.tags)) { %>
+              Tags: <%= audio.tags.join(', ') %>
+            <% } else { %>
+              Tag: <%= audio.tags %>
+            <% } %>
+          </p>
+          <p>Uploader: <%= audio.uploader %></p>
+          <form action="/profile" method="post">
+            <input type="hidden" name="audioID" value="<%=audio.id%>">
+            <input type="hidden" name="filePath" value="<%= audio.filePath %>">
+            <button type="submit"  class="btn btn-danger"> Delete</button>
+          </form>
+        </div>
+      <% }); %>
+    <% } %>
+  </div>
+
+  <script>
+    const currentRoute = '/profile';
+    const userSounds = <%- JSON.stringify(my_sounds) %>;
+      </script>

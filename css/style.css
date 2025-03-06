@@ -1,0 +1,82 @@
+html,
+body {
+  height: 100%
+}
+#map{
+    height: 100%;
+}
+#loginbox{
+    border:1px solid grey;
+    padding:10px;
+    border-radius:6px;
+    background: rgb(249,249,249);
+    background: linear-gradient(-45deg, rgba(249,249,249,1) 0%, rgba(211,208,242,1) 50%, rgba(225,250,255,1) 100%);
+    box-shadow: 10px 5px 5px rgba(0,0,0,0.5);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#container {
+  padding: 10px;
+  display:grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: 120px auto 50px;
+  height: calc(100vh - 20px);
+}
+
+#content {
+    background: #fff;
+    display: grid;
+    grid-template-columns:   400px auto;
+  }
+
+#content-center {
+  flex-grow: 1; /* Allow content area to take up all available space */
+  border: solid rgb(200, 200, 200) 2px;
+  padding: 10px;
+}
+
+#content-left {
+  border: solid rgb(200, 200, 200) 2px;
+  padding: 10px;
+}
+
+#footer {
+  background: skyblue;
+  text-align: center;
+}
+
+#tag_box{
+    border: solid black 1px;
+}
+
+.nav-left{
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 5px;
+  padding: 10px;
+}
+
+.nav-link.active {
+    font-weight: bold;
+  }
+
+.nav-link:hover {
+background-color: skyblue;
+border-radius: 7px;
+}
+
+  
+.filter { margin: 20px 0; }
+.filter select { padding: 5px; }
+.audio-item { margin: 10px 0; padding: 10px; border: 1px solid #ddd; }
+.tags { color: gray; font-size: 0.9em; }
+a { text-decoration: none; color: blue; }
+ 
+.audio-item.highlight {
+    background-color: #ffe5e5; /* Light red or any color you like */
+    border: 1px solid #ff0000; /* Red border */
+}
+

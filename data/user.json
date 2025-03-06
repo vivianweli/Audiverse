@@ -1,0 +1,32 @@
+[
+  {
+    "userid": "v@v.com",
+    "password": "v",
+    "username": "Vivian"
+  },
+  {
+    "userid": "f@f.com",
+    "password": "f",
+    "username": "Francisco"
+  },
+  {
+    "userid": "g@g.com",
+    "password": "g",
+    "username": "gg"
+  },
+  {
+    "userid": "apple@gmail.com",
+    "password": "a",
+    "username": "apple"
+  },
+  {
+    "userid": "banana@b.com",
+    "password": "b",
+    "username": "bb"
+  },
+  {
+    "userid": "balloon@b.com",
+    "password": "b",
+    "username": "Balloon"
+  }
+]

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/node_modules/leaflet/dist/leaflet.css">
+  <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/node_modules/leaflet/dist/leaflet.js"></script>
+
+  
+</head>
+
+<body>
+  <div id="container">
+    <div>
+      <%- include('../partials/header') %>
+    </div>
+    <div id="content">
+      
+      <div id="content-center">
+        <main>
+          <%- body %>
+        </main>
+      </div>
+      <div id="content-right">
+        <%- include('../partials/content-right') %>
+      </div>
+
+    </div>
+    <div id="footer">
+      <%- include('../partials/footer') %>
+    </div>
+  </div>
+  
+
+</body>
+
+</html>

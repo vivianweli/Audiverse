@@ -1,0 +1,68 @@
+<h1>
+  <label>Audio List</label>
+</h1>
+
+
+  <!-- Tag Filter -->
+  <div class="input-group mb-3">
+    <label class="input-group-text" for="tag-filter">Filter by Tag</label>
+    <select id="tag-filter" class="form-select" onchange="filterByTag()">
+        <option value="all" <%= selectedTag === 'all' ? 'selected' : '' %>>All</option>
+        <% tags.forEach(tag => { %>
+            <option value="<%= tag %>" <%= selectedTag === tag ? 'selected' : '' %>><%= tag %></option>
+          <% }); %>
+        </select>
+  </div>
+
+  
+
+
+<!-- Audio List -->
+<div id="audio-list" >
+  <% if (sounds.length === 0) { %>
+    <p>No audio available for this tag.</p>
+  <% } else { %>
+    <% sounds.forEach(audio => { %>
+      <div class="audio-item" data-title="<%= audio.title.toLowerCase() %>" data-id="<%= audio.id %>">
+        <h2><a href="/sound/<%= audio.id %>"><%= audio.title %></a></h2>
+        <p class="tags">
+          <% if (!audio.tags || audio.tags === '') { %>
+            No tags
+          <% } else if (Array.isArray(audio.tags)) { %>
+            Tags: <%= audio.tags.join(', ') %>
+          <% } else { %>
+            Tag: <%= audio.tags %>
+          <% } %>
+        </p>
+        <p>Uploader: <%= audio.uploader %> </p>
+      </div>
+    <% }); %>
+  <% } %>
+</div>
+
+<!-- Pagination Controls -->
+<div class="pagination">
+  <% if (currentPage > 1) { %>
+    <a href="?page=<%= currentPage - 1 %>&tag=<%= selectedTag %>">Previous</a>
+  <% } %>
+
+  <span>Page <%= currentPage %> of <%= totalPages %></span>
+
+  <% if (currentPage < totalPages) { %>
+    <a href="?page=<%= currentPage + 1 %>&tag=<%= selectedTag %>">Next</a>
+  <% } %>
+</div>
+
+<script>
+  // Handle filtering based on tag selection
+  function filterByTag() {
+    const selectedTag = document.getElementById('tag-filter').value;
+    window.location.href = `?page=1&tag=${selectedTag}`;  // Reset to page 1 and apply the selected tag
+  }
+
+  const currentRoute = '/';
+  const filteredSounds = <%- JSON.stringify(sounds) %>;
+</script>
+
+
+<!-- haha -->
